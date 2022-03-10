@@ -1,4 +1,17 @@
 package co.com.sofka.domain.envio.value;
 
-public class DomiciliarioID {
+import co.com.sofka.domain.generic.Identity;
+
+public class DomiciliarioID extends Identity {
+    private DomiciliarioID (String valor){
+        super(valor);
+    }
+
+    public DomiciliarioID (){
+
+    }
+    public static DomiciliarioID of(String valor) {
+
+        return new DomiciliarioID (valor);
+    }
 }

@@ -5,17 +5,15 @@ import co.com.sofka.domain.generic.ValueObject;
 public class Nombre implements ValueObject<String> {
 
     private final String nombre;
-    private final String apellido;
 
 
-    public Nombre(String primerNombre, String apellido) {
-        this.nombre = primerNombre;
-        this.apellido = apellido;
+    public Nombre(String nombreProducto) {
+        this.nombre = nombreProducto;
+
     }
 
     @Override
     public String value() {
-        return nombre + " " + apellido;
+        return nombre;
     }
-
 }
