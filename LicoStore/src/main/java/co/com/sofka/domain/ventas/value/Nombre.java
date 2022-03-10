@@ -8,9 +8,9 @@ public class Nombre implements ValueObject<String> {
     private final String apellido;
 
 
-    public Nombre(String primerNombre, String segundoNombre) {
+    public Nombre(String primerNombre, String apellido) {
         this.nombre = primerNombre;
-        this.apellido = segundoNombre;
+        this.apellido = apellido;
     }
 
     @Override
