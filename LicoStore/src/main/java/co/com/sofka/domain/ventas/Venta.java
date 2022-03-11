@@ -56,6 +56,7 @@ public class Venta extends AggregateEvent<VentaID> {
         return null;
     }*/
 
+
     public void cambiarVendedor(VendedorID vendedorID){
         appendChange(new VendedorCambiado(vendedorID)).apply();
     }

@@ -5,8 +5,8 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.ventas.value.ClienteID;
 
 public class DireccionDestinatarioAsignada extends DomainEvent {
-    private ClienteID clienteID;
-    private Direccion direccion;
+    private final ClienteID clienteID;
+    private final Direccion direccion;
 
     public DireccionDestinatarioAsignada(ClienteID clienteID, Direccion direccion){
         super("sofka.envio.direcciondestinatarioasignada");

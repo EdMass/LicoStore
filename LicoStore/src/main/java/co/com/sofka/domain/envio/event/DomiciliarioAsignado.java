@@ -5,8 +5,8 @@ import co.com.sofka.domain.envio.value.EnvioID;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class DomiciliarioAsignado extends DomainEvent {
-    private EnvioID envioID;
-    private DomiciliarioID domiciliarioID;
+    private final EnvioID envioID;
+    private final DomiciliarioID domiciliarioID;
     public DomiciliarioAsignado(EnvioID envioID, DomiciliarioID domiciliarioID){
         super("sofka.envio.domiciliarioasignado");
         this.envioID= envioID;
