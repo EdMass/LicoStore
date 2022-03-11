@@ -29,12 +29,13 @@ public class Venta extends AggregateEvent<VentaID> {
 
 
     public Venta(VentaID entityId,
+                 ClienteID clienteID,
                  Nombre nombreCliente,
                  Telefono telefonoCliente,
                  VendedorID vendedorID) {
         super(entityId);
         subscribe(new VentaChange(this));
-        appendChange(new VentaCreada(nombreCliente,telefonoCliente, vendedorID)).apply();
+        appendChange(new VentaCreada(clienteID, nombreCliente,telefonoCliente, vendedorID)).apply();
     }
 
     private Venta(VentaID entityId) {
@@ -57,13 +58,28 @@ public class Venta extends AggregateEvent<VentaID> {
     }*/
 
 
+    public void crearVendedor(VendedorID vendedorID, Nombre nombre, Telefono telefono){
+        appendChange(new VendedorCreado(vendedorID, nombre, telefono)).apply();
+    }
+
+    public void crearCliente(ClienteID clienteID, Nombre nombre, Telefono telefono){
+        appendChange(new ClienteCreado(clienteID, nombre, telefono)).apply();
+    }
+
+    public void asignarCliente(ClienteID clienteID){
+        appendChange((new ClienteAsignado(clienteID))).apply();
+    }
+
+    public void asignarVendedor(VendedorID vendedorID){
+        appendChange(new VendedorAsignado(vendedorID)).apply();
+    }
+
     public void cambiarVendedor(VendedorID vendedorID){
         appendChange(new VendedorCambiado(vendedorID)).apply();
     }
 
     public void actualizarCliente(Cliente cliente){
         Objects.requireNonNull(cliente);
-
         appendChange(new ClienteActualizado(cliente)).apply();
     }
 

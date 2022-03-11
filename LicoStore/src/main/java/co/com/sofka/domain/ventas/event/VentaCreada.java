@@ -2,23 +2,22 @@ package co.com.sofka.domain.ventas.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.ventas.Cliente;
-import co.com.sofka.domain.ventas.value.Nombre;
-import co.com.sofka.domain.ventas.value.Telefono;
-import co.com.sofka.domain.ventas.value.VendedorID;
-import co.com.sofka.domain.ventas.value.VentaID;
+import co.com.sofka.domain.ventas.value.*;
 
 public class VentaCreada extends DomainEvent {
-    protected Nombre nombreCliente;
-    protected VendedorID vendedorID;
-    protected Telefono telefonoCliente;
+    private final Nombre nombreCliente;
+    private final VendedorID vendedorID;
+    private final Telefono telefonoCliente;
+    private final ClienteID clienteID;
 
-    public VentaCreada(Nombre nombreCliente,
+    public VentaCreada(ClienteID clienteID,Nombre nombreCliente,
                        Telefono telefonoCliente,
                        VendedorID vendedorID) {
         super("sofka.venta.ventacreada");
         this.nombreCliente = nombreCliente;
         this.telefonoCliente = telefonoCliente;
         this.vendedorID = vendedorID;
+        this.clienteID = clienteID;
     }
 
     public Nombre getNombreCliente() {
@@ -31,5 +30,9 @@ public class VentaCreada extends DomainEvent {
 
     public VendedorID getVendedorID() {
         return vendedorID;
+    }
+
+    public ClienteID getClienteID() {
+        return clienteID;
     }
 }

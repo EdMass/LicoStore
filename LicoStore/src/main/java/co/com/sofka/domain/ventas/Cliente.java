@@ -23,8 +23,6 @@ public class Cliente extends Entity<ClienteID> {
         this.telefono = telefono;
     }
 
-
-
     public Cliente(ClienteID clienteID) {
         super(clienteID);
     }

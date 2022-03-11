@@ -1,7 +1,7 @@
 package co.com.sofka.domain.inventario;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.domain.inventario.value.*;
-import co.com.sofka.domain.ventas.value.VendedorID;
+import co.com.sofka.domain.ventas.value.ProveedorID;
 
 public class Producto extends Entity<ProductoID> {
 
@@ -9,7 +9,7 @@ public class Producto extends Entity<ProductoID> {
     protected Precio precio;
     protected Descripcion descripcion;
     protected Cantidad cantidad;
-    protected VendedorID vendedorID;
+    protected ProveedorID proveedorID;
 
     public Producto (ProductoID entityId, Nombre nombre,Precio precio, Descripcion descripcion) {
         super(entityId);
@@ -29,10 +29,10 @@ public class Producto extends Entity<ProductoID> {
         this.cantidad = cantidad;
     }
 
-    public Producto(ProductoID entityId, Nombre nombre, VendedorID vendedorID) {
+    public Producto(ProductoID entityId, Nombre nombre, ProveedorID proveedorID) {
         super(entityId);
         this.nombre = nombre;
-        this.vendedorID = vendedorID;
+        this.proveedorID = proveedorID;
     }
 
     public Nombre nombre() {
@@ -51,7 +51,7 @@ public class Producto extends Entity<ProductoID> {
         return cantidad;
     }
 
-    public VendedorID getVendedorID() {
-        return vendedorID;
+    public ProveedorID getVendedorID() {
+        return proveedorID;
     }
 }
