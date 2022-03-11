@@ -7,13 +7,14 @@ import co.com.sofka.domain.ventas.Orden;
 public class Total implements ValueObject<Double> {
 
     private Double contador = 0.0;
-    private Orden orden;
+    private final OrdenID ordenID;
 
-    public Total(Orden orden) {
-        this.orden = orden;
+    public Total(OrdenID ordenID) {
+        this.ordenID = ordenID;
     }
 
-    public Double sumarProductos(Orden orden){
+    public Double sumarProductos(){
+         Orden orden = new Orden(ordenID);
         for (Producto producto: orden.listarProductos()) {
             contador = contador + producto.precio().getPrice();
         }
@@ -22,7 +23,7 @@ public class Total implements ValueObject<Double> {
 
     @Override
     public Double value() {
-        return contador;
+        return this.sumarProductos();
     }
 
 }
