@@ -1,5 +1,6 @@
 package co.com.sofka.domain.ventas;
 
+import co.com.sofka.domain.envio.value.Direccion;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.domain.ventas.value.ClienteID;
 import co.com.sofka.domain.ventas.value.Nombre;
@@ -14,12 +15,20 @@ public class Cliente extends Entity<ClienteID> {
     protected Nombre nombre;
     protected Telefono telefono;
     protected List<Cliente> clientes = new ArrayList();
+//    protected Direccion direccion;
 
     public Cliente(ClienteID entityId, Nombre nombre, Telefono telefono) {
         super(entityId);
         this.nombre = nombre;
         this.telefono = telefono;
     }
+
+
+
+    public Cliente(ClienteID clienteID) {
+        super(clienteID);
+    }
+
 
     public void crearCliente(ClienteID clienteId, Nombre nombre, Telefono telefono){
         for (Cliente cliente: clientes) {
@@ -58,6 +67,15 @@ public class Cliente extends Entity<ClienteID> {
     public List<Cliente> getClientes() {
         return clientes;
     }
+
+    public Nombre getNombre() {
+        return nombre;
+    }
+
+    public Telefono getTelefono() {
+        return telefono;
+    }
+
 
     @Override
     public boolean equals(Object o) {

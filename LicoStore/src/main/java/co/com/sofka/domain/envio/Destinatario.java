@@ -1,35 +1,40 @@
 package co.com.sofka.domain.envio;
-import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domain.envio.value.DestinatarioID;
 import co.com.sofka.domain.envio.value.Telefono;
 import co.com.sofka.domain.envio.value.Nombre;
 import co.com.sofka.domain.envio.value.Direccion;
+import co.com.sofka.domain.ventas.Cliente;
+import co.com.sofka.domain.ventas.value.ClienteID;
 
-public class Destinatario extends Entity<DestinatarioID> {
+public class Destinatario extends Cliente {
 
+    protected Direccion direccion;
+    protected ClienteID clienteID;
     protected Nombre nombre;
     protected Telefono telefono;
-    protected Direccion direccion;
 
+    public Destinatario (ClienteID clienteID,Direccion direccion, Nombre nombre, Telefono telefono) {
 
-    public Destinatario (DestinatarioID entityId, Nombre nombre,Telefono telefono, Direccion direccion) {
-        super(entityId);
-        this.nombre = nombre;
-        this.telefono= telefono;
+        super(clienteID);
+        this.clienteID= clienteID;
         this.direccion= direccion;
+        this.nombre=nombre;
+        this.telefono= telefono;
 
     }
 
-    public Nombre nombre() {
-        return nombre;
+    public Direccion getDireccion() {
+        return direccion;
     }
 
-    public Telefono telefono() {
-        return telefono;
+    public ClienteID getClienteID() {
+        return clienteID;
     }
 
     public Direccion direccion() {
         return direccion;
+    }
+    public void agregarDireccionACliente(ClienteID clienteID, Nombre nombre){
+
     }
 
 }
