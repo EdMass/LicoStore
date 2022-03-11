@@ -14,7 +14,9 @@ public class Pago implements ValueObject<Double> {
 
     public Double vueltos(Double dinero, Total total){
         dinero= dinero - total.value();
+        if(dinero>0){
             return dinero;
+        }throw new IllegalArgumentException("El dinero entregado no es suficiente, aun faltan "+(-1*dinero));
     }
 
     @Override
