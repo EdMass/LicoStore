@@ -7,12 +7,13 @@ import co.com.sofka.domain.ventas.value.Telefono;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cliente extends Entity<ClienteID> {
 
     protected Nombre nombre;
     protected Telefono telefono;
-    private List<Cliente> clientes = new ArrayList();
+    protected List<Cliente> clientes = new ArrayList();
 
     public Cliente(ClienteID entityId, Nombre nombre, Telefono telefono) {
         super(entityId);
@@ -52,5 +53,23 @@ public class Cliente extends Entity<ClienteID> {
 
     public Telefono telefono() {
         return telefono;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cliente)) return false;
+        if (!super.equals(o)) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(nombre, cliente.nombre) && Objects.equals(telefono, cliente.telefono) && Objects.equals(getClientes(), cliente.getClientes());
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

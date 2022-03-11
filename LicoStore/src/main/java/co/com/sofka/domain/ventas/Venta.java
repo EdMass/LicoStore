@@ -4,32 +4,48 @@ package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.envio.value.EnvioID;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.inventario.value.InventarioID;
 import co.com.sofka.domain.inventario.value.ProductoID;
 import co.com.sofka.domain.ventas.event.*;
 import co.com.sofka.domain.ventas.value.*;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class Venta extends AggregateEvent<VentaID> {
 
-    protected Cliente cliente;
+    protected Set<Cliente> clientes;
     protected Fecha fecha;
     protected Pago pago;
     protected Orden orden;
-    protected VendedorID vendedorID;
+    protected Set<Vendedor> vendedores;
     protected EnvioID envioID;
     protected Total total;
     protected Factura factura;
 
 
-    public Venta(VentaID entityId, Cliente cliente, VendedorID vendedorID) {
+    public Venta(VentaID entityId,
+                 Nombre nombreCliente,
+                 Telefono telefonoCliente,
+                 VendedorID vendedorID) {
         super(entityId);
-        this.cliente = cliente;
-        this.vendedorID = vendedorID;
-        appendChange(new VentaCreada(cliente, vendedorID)).apply();
+        subscribe(new VentaChange(this));
+        appendChange(new VentaCreada(nombreCliente,telefonoCliente, vendedorID)).apply();
+    }
+
+    private Venta(VentaID entityId) {
+        super(entityId);
+        subscribe(new VentaChange(this));
+    }
+
+    public static Venta from(VentaID entityId, List<DomainEvent> list) {
+        Venta venta = new Venta(entityId);
+        list.forEach(venta::applyEvent);
+        return venta;
     }
 
     /*todo crear el evento EnvioCreado
@@ -40,13 +56,18 @@ public class Venta extends AggregateEvent<VentaID> {
         return null;
     }*/
 
-        public void cambiarVendedor(VendedorID vendedorID){
+    public void cambiarVendedor(VendedorID vendedorID){
         appendChange(new VendedorCambiado(vendedorID)).apply();
     }
 
-    public void actualizarCliente(ClienteID clienteID, Cliente cliente){
+    public void actualizarCliente(Cliente cliente){
         Objects.requireNonNull(cliente);
-        appendChange(new ClienteActualizado(clienteID, cliente)).apply();
+
+        appendChange(new ClienteActualizado(cliente)).apply();
+    }
+
+    public void crearProducto(){
+
     }
 
     public void agregarProducto(InventarioID inventarioID, Producto producto){
@@ -80,10 +101,6 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new VentaPagada(pago)).apply();
     }
 
-    public Cliente Cliente() {
-        return cliente;
-    }
-
     public Fecha Fecha() {
         return fecha;
     }
@@ -96,10 +113,6 @@ public class Venta extends AggregateEvent<VentaID> {
         return orden;
     }
 
-    public VendedorID VendedorID() {
-        return vendedorID;
-    }
-
     public EnvioID EnvioID() {
         return envioID;
     }
@@ -110,5 +123,13 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public Factura Factura() {
         return factura;
+    }
+
+    public Set<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public Set<Vendedor> getVendedores() {
+        return vendedores;
     }
 }

@@ -6,17 +6,12 @@ import co.com.sofka.domain.ventas.value.ClienteID;
 
 public class ClienteActualizado extends DomainEvent {
 
-    private final ClienteID clienteID;
     private final Cliente cliente;
 
-    public ClienteActualizado(ClienteID clienteID, Cliente cliente) {
+    public ClienteActualizado( Cliente cliente) {
         super("sofka.venta.clienteactualizado");
-        this.clienteID = clienteID;
-        this.cliente = cliente;
-    }
 
-    public ClienteID getClienteID() {
-        return clienteID;
+        this.cliente = cliente;
     }
 
     public Cliente getCliente() {

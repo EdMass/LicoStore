@@ -3,7 +3,7 @@ package co.com.sofka.domain.envio.value;
 import co.com.sofka.domain.generic.Identity;
 
 public class EnvioID extends Identity {
-    private EnvioID (String valor){
+    private  EnvioID (String valor){
         super(valor);
     }
 

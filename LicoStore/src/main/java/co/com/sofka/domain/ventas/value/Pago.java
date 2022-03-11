@@ -21,6 +21,6 @@ public class Pago implements ValueObject<Double> {
 
     @Override
     public Double value() {
-        return dinero;
+        return this.vueltos(dinero, total);
     }
 }
