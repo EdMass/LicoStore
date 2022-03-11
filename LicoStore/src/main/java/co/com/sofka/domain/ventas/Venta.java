@@ -38,6 +38,7 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new VentaCreada(clienteID, nombreCliente,telefonoCliente, vendedorID)).apply();
     }
 
+    // TODO: 11/03/2022 arreglar el VentaChange
     private Venta(VentaID entityId) {
         super(entityId);
         subscribe(new VentaChange(this));
