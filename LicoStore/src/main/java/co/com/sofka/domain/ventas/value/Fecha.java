@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class Fecha implements ValueObject<String> {
 
 
-    DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+    private final DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
 
     private final LocalDateTime value= LocalDateTime.now();
 
