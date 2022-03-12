@@ -7,6 +7,7 @@ import co.com.sofka.domain.ventas.value.VendedorID;
 
 public class VendedorCreado extends DomainEvent {
 
+
     private final VendedorID vendedorID;
     private final Nombre nombre;
     private final Telefono telefono;

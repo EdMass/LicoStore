@@ -62,11 +62,11 @@ public class Cliente extends Entity<ClienteID> {
         return telefono;
     }
 
-    public List<Cliente> getClientes() {
+    public List<Cliente> Clientes() {
         return clientes;
     }
 
-    public Nombre getNombre() {
+    public Nombre Nombre() {
         return nombre;
     }
 
@@ -81,7 +81,7 @@ public class Cliente extends Entity<ClienteID> {
         if (!(o instanceof Cliente)) return false;
         if (!super.equals(o)) return false;
         Cliente cliente = (Cliente) o;
-        return Objects.equals(nombre, cliente.nombre) && Objects.equals(telefono, cliente.telefono) && Objects.equals(getClientes(), cliente.getClientes());
+        return Objects.equals(nombre, cliente.nombre) && Objects.equals(telefono, cliente.telefono) && Objects.equals(Clientes(), cliente.Clientes());
     }
 
     @Override

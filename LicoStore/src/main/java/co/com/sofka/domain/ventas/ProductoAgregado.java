@@ -3,23 +3,40 @@ package co.com.sofka.domain.ventas;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.inventario.value.*;
+import co.com.sofka.domain.ventas.value.Nombre;
 
 public class ProductoAgregado extends DomainEvent {
 
-    private final InventarioID inventarioID;
-    private final Producto producto;
+    private final ProductoID productoID;
+    private final Nombre nombreProducto;
+    private final Precio precio;
+    private final Cantidad cantidad;
 
-    public ProductoAgregado(InventarioID inventarioID, Producto producto) {
+    public ProductoAgregado(ProductoID productoID,
+                            Nombre nombreProducto,
+                            Precio precio,
+                            Cantidad cantidad) {
         super("sofka.venta.productoagregado");
-        this.inventarioID = inventarioID;
-        this.producto = producto;
+        this.productoID = productoID;
+        this.nombreProducto = nombreProducto;
+        this.precio = precio;
+        this.cantidad = cantidad;
     }
 
-    public InventarioID getInventarioID() {
-        return inventarioID;
+    public ProductoID getProductoID() {
+        return productoID;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Nombre getNombreProducto() {
+        return nombreProducto;
     }
+
+    public Precio getPrecio() {
+        return precio;
+    }
+
+    public Cantidad getCantidad() {
+        return cantidad;
+    }
+
 }

@@ -6,7 +6,9 @@ import co.com.sofka.domain.envio.value.EnvioID;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.Producto;
+import co.com.sofka.domain.inventario.value.Cantidad;
 import co.com.sofka.domain.inventario.value.InventarioID;
+import co.com.sofka.domain.inventario.value.Precio;
 import co.com.sofka.domain.inventario.value.ProductoID;
 import co.com.sofka.domain.ventas.event.*;
 import co.com.sofka.domain.ventas.value.*;
@@ -60,22 +62,31 @@ public class Venta extends AggregateEvent<VentaID> {
 
 
     public void crearVendedor(VendedorID vendedorID, Nombre nombre, Telefono telefono){
+        Objects.requireNonNull(vendedorID);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(telefono);
         appendChange(new VendedorCreado(vendedorID, nombre, telefono)).apply();
     }
 
     public void crearCliente(ClienteID clienteID, Nombre nombre, Telefono telefono){
+        Objects.requireNonNull(clienteID);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(telefono);
         appendChange(new ClienteCreado(clienteID, nombre, telefono)).apply();
     }
 
     public void asignarCliente(ClienteID clienteID){
+        Objects.requireNonNull(clienteID);
         appendChange((new ClienteAsignado(clienteID))).apply();
     }
 
     public void asignarVendedor(VendedorID vendedorID){
+        Objects.requireNonNull(vendedorID);
         appendChange(new VendedorAsignado(vendedorID)).apply();
     }
 
     public void cambiarVendedor(VendedorID vendedorID){
+        Objects.requireNonNull(vendedorID);
         appendChange(new VendedorCambiado(vendedorID)).apply();
     }
 
@@ -84,14 +95,15 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new ClienteActualizado(cliente)).apply();
     }
 
-    public void crearProducto(){
-
-    }
-
-    public void agregarProducto(InventarioID inventarioID, Producto producto){
-        Objects.requireNonNull(inventarioID);
-        Objects.requireNonNull(producto);
-        appendChange(new ProductoAgregado(inventarioID, producto)).apply();
+    public void agregarProducto(ProductoID productoID,
+                                Nombre nombreProducto,
+                                Precio precio,
+                                Cantidad cantidad){
+        Objects.requireNonNull(productoID);
+        Objects.requireNonNull(nombreProducto);
+        Objects.requireNonNull(precio);
+        Objects.requireNonNull(cantidad);
+        appendChange(new ProductoAgregado(productoID, nombreProducto, precio, cantidad)).apply();
     }
 
     public void eliminarProducto(ProductoID productoID){
@@ -118,6 +130,7 @@ public class Venta extends AggregateEvent<VentaID> {
         Objects.requireNonNull(pago);
         appendChange(new VentaPagada(pago)).apply();
     }
+
 
     public Fecha Fecha() {
         return fecha;
