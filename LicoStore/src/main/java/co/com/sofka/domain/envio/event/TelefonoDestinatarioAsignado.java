@@ -1,23 +1,26 @@
 package co.com.sofka.domain.envio.event;
 
+import co.com.sofka.domain.envio.value.Telefono;
 import co.com.sofka.domain.generic.DomainEvent;
-
-import java.util.UUID;
+import co.com.sofka.domain.ventas.value.ClienteID;
 
 public class TelefonoDestinatarioAsignado extends DomainEvent {
-    public TelefonoDestinatarioAsignado(String type, String aggregateRootId, String aggregateParentId, UUID uuid) {
-        super(type, aggregateRootId, aggregateParentId, uuid);
+
+    private final ClienteID clienteID;
+    private final Telefono telefono;
+
+    public TelefonoDestinatarioAsignado(ClienteID clienteID, Telefono telefono){
+
+        super("sofka.envio.telefonodestinatarioasignado");
+        this.clienteID = clienteID;
+        this.telefono = telefono;
     }
 
-    public TelefonoDestinatarioAsignado(String type, String aggregateRootId, UUID uuid) {
-        super(type, aggregateRootId, uuid);
+    public ClienteID getClienteID() {
+        return clienteID;
     }
 
-    public TelefonoDestinatarioAsignado(String type, UUID uuid) {
-        super(type, uuid);
-    }
-
-    public TelefonoDestinatarioAsignado(String type) {
-        super(type);
+    public Telefono getTelefono() {
+        return telefono;
     }
 }
