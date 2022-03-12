@@ -1,6 +1,5 @@
 package co.com.sofka.domain.inventario;
 
-
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.event.*;
@@ -68,4 +67,11 @@ public class Inventario extends AggregateEvent {
         appendChange(new precioProductoModificado(productoID, precio)).apply();
     }
 
+    public Set<Producto> Productos() {
+        return productos;
+    }
+
+    public Set<Proveedor> Proveedores() {
+        return proveedores;
+    }
 }
