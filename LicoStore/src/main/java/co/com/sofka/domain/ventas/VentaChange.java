@@ -5,19 +5,26 @@ import co.com.sofka.domain.ventas.event.ClienteActualizado;
 import co.com.sofka.domain.ventas.event.VendedorCambiado;
 import co.com.sofka.domain.ventas.event.VentaCreada;
 import co.com.sofka.domain.ventas.value.ClienteID;
+
 import java.util.List;
 
 public class VentaChange extends EventChange {
 
 
     public VentaChange(Venta venta) {
-    /*
+
 
         apply((VentaCreada event) -> {
             venta.vendedorID = event.getVendedorID();
-            venta.cliente = event.getCliente();
+            venta.clienteID = event.getClienteID();
+            venta.factura = event.getFactura();
+            venta.fecha = event.getFecha();
+            venta.orden = event.getOrden();
+            venta.total = event.getTotal();
+            venta.pago = event.getPago();
         });
 
+        /*
         apply((VendedorCambiado event) ->{
             venta.vendedorID = event.getVendedorID();
         });

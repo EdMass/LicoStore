@@ -43,8 +43,6 @@ v
 Fsrc/main/java/co/com/sofka/domain/ventas/event/ClienteActualizado.java,a\6\a6a99e77f6f83e3ae8c6fa00069185b135d86269
 i
 9src/main/java/co/com/sofka/domain/envio/Domiciliario.java,a\b\ab3f292021d31357c87338e8a1772f5221254f93
-o
-?src/main/java/co/com/sofka/domain/ventas/event/VentaCreada.java,e\0\e034a8ffad46041cb3702ce4451a6482d43d66f8
 i
 9src/main/java/co/com/sofka/domain/envio/Destinatario.java,6\1\61aa9db9163744e912895118e49cfea516d922b4
 h

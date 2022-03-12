@@ -44,7 +44,6 @@ public class Vendedor extends Entity<VendedorID> {
                 vendedor2.telefono = vendedor3.telefono;
             }
         }
-
         return vendedor2;
     }
 
