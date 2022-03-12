@@ -27,7 +27,7 @@ public class Orden extends Entity<OrdenID> {
         productosOrden.add(producto);
     }
 
-    public void eliminarProducto(OrdenID productoID){
+    public void eliminarProducto(ProductoID productoID){
         for (Producto producto:productosOrden) {
             if(producto.identity().equals(productoID)){
                 productosOrden.remove(producto);

@@ -1,10 +1,8 @@
 package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.domain.ventas.event.ClienteActualizado;
-import co.com.sofka.domain.ventas.event.ProductoAgregado;
-import co.com.sofka.domain.ventas.event.VendedorCambiado;
-import co.com.sofka.domain.ventas.event.VentaCreada;
+import co.com.sofka.domain.inventario.Producto;
+import co.com.sofka.domain.ventas.event.*;
 
 public class VentaChange extends EventChange {
 
@@ -15,11 +13,7 @@ public class VentaChange extends EventChange {
         apply((VentaCreada event) -> {
             venta.vendedorID = event.getVendedorID();
             venta.clienteID = event.getClienteID();
-            venta.factura = event.getFactura();
-            venta.fecha = event.getFecha();
-            venta.orden = event.getOrden();
-            venta.total = event.getTotal();
-            venta.pago = event.getPago();
+            venta.fecha =event.getFecha();
         });
 
 
@@ -45,7 +39,27 @@ public class VentaChange extends EventChange {
                     event.getCantidad());
         });
 
+        apply((VendedorCreado event) -> {
+            Vendedor vendedor = new Vendedor(event.getVendedorID());
+            vendedor.crearVendedor(event.getVendedorID(), event.getNombre(), event.getTelefono());
+        });
 
+        apply((ClienteCreado event) -> {
+            Cliente cliente = new Cliente(event.getClienteID());
+            cliente.crearCliente(event.getClienteID(), event.getNombre(), event.getTelefono());
+        });
+
+        apply((ClienteAsignado event) -> {
+           venta.clienteID = event.getClienteID();
+        });
+
+        apply((VendedorAsignado event) -> {
+            venta.vendedorID = event.getVendedorID();
+        });
+
+        apply((ProductoEliminado event) -> {
+            venta.orden.eliminarProducto(event.getProductoID());
+        });
     }
 
 }
