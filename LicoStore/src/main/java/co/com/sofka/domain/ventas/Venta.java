@@ -1,7 +1,5 @@
 package co.com.sofka.domain.ventas;
 
-
-
 import co.com.sofka.domain.envio.value.EnvioID;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;

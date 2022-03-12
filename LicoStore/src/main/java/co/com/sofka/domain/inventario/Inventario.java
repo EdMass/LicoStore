@@ -61,4 +61,11 @@ public class Inventario extends AggregateEvent {
         Objects.requireNonNull(newDescripcion);
         appendChange(new DescripciondeProductoActualizada(productoID, newDescripcion)).apply();
     }
+
+    public void modificarPrecioProducto(ProductoID productoID, Precio precio){
+        Objects.requireNonNull(productoID);
+        Objects.requireNonNull(precio);
+        appendChange(new precioProductoModificado(productoID, precio)).apply();
+    }
+
 }
