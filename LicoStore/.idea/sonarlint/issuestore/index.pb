@@ -37,10 +37,6 @@ n
 >src/main/java/co/com/sofka/domain/ventas/ProductoAgregado.java,a\c\ac5f4f995178fd5c87c14d1a6bc4996a97b43653
 k
 ;src/main/java/co/com/sofka/domain/ventas/value/VentaID.java,d\7\d75e2c94657bb6a5a3bb0dc18b2af1ee7a369775
-t
-Dsrc/main/java/co/com/sofka/domain/ventas/event/VendedorCambiado.java,8\4\8497d50def07d4102ec853f4b2eaafbd1f718c9d
-v
-Fsrc/main/java/co/com/sofka/domain/ventas/event/ClienteActualizado.java,a\6\a6a99e77f6f83e3ae8c6fa00069185b135d86269
 i
 9src/main/java/co/com/sofka/domain/envio/Domiciliario.java,a\b\ab3f292021d31357c87338e8a1772f5221254f93
 i

@@ -14,6 +14,7 @@ public class Vendedor extends Entity<VendedorID> {
 
     protected Nombre nombre;
     protected Telefono telefono;
+    protected VendedorID vendedorID;
     private List<Vendedor> vendedores = new ArrayList();
     private List<Venta> ventasHechas = new ArrayList<>();
 
@@ -67,7 +68,7 @@ public class Vendedor extends Entity<VendedorID> {
         }
     }
 
-    public void actualizarVendedor(VendedorID entityId, Nombre nombre, Telefono telefono) {
+    public void actualizarVendedorExistente(VendedorID entityId, Nombre nombre, Telefono telefono) {
         eliminarVendedor(entityId);
         crearVendedor(entityId, nombre, telefono);
     }
@@ -83,4 +84,10 @@ public class Vendedor extends Entity<VendedorID> {
     public Telefono telefono() {
         return telefono;
     }
+
+    public VendedorID vendedorID(){
+        return vendedorID;
+    }
+
+
 }

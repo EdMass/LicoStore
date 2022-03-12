@@ -77,11 +77,8 @@ public class Cliente extends Entity<ClienteID> {
         crearCliente(clienteId, nombre, telefono);
     }
 
-    public Nombre nombre() {
-        return nombre;
-    }
 
-    public Telefono telefono() {
+    public Telefono Telefono() {
         return telefono;
     }
 
@@ -93,9 +90,6 @@ public class Cliente extends Entity<ClienteID> {
         return nombre;
     }
 
-    public Telefono getTelefono() {
-        return telefono;
-    }
 
 
     @Override

@@ -85,9 +85,9 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new VendedorCambiado(vendedorID)).apply();
     }
 
-    public void actualizarCliente(Cliente cliente) {
-        Objects.requireNonNull(cliente);
-        appendChange(new ClienteActualizado(cliente)).apply();
+    public void actualizarCliente(ClienteID clienteID, Nombre nombre, Telefono telefono) {
+        Objects.requireNonNull(clienteID);
+        appendChange(new ClienteActualizado(clienteID, nombre, telefono)).apply();
     }
 
     public void agregarProducto(ProductoID productoID,

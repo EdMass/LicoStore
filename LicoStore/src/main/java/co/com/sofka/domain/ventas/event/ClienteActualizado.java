@@ -1,20 +1,33 @@
 package co.com.sofka.domain.ventas.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.ventas.Cliente;
 import co.com.sofka.domain.ventas.value.ClienteID;
+import co.com.sofka.domain.ventas.value.Nombre;
+import co.com.sofka.domain.ventas.value.Telefono;
 
 public class ClienteActualizado extends DomainEvent {
 
-    private final Cliente cliente;
+    private final ClienteID clienteID;
+    private final Nombre nombre;
+    private final Telefono telefono;
 
-    public ClienteActualizado( Cliente cliente) {
+    public ClienteActualizado( ClienteID clienteID, Nombre nombre, Telefono telefono) {
         super("sofka.venta.clienteactualizado");
 
-        this.cliente = cliente;
+        this.clienteID = clienteID;
+        this.nombre=nombre;
+        this.telefono=telefono;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Nombre getNombre() {
+        return nombre;
+    }
+
+    public Telefono getTelefono() {
+        return telefono;
+    }
+
+    public ClienteID getClienteID() {
+        return clienteID;
     }
 }
