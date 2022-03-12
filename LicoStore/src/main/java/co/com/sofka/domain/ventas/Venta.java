@@ -157,4 +157,6 @@ public class Venta extends AggregateEvent<VentaID> {
     public VendedorID VendedorID() {
         return vendedorID;
     }
+
+
 }
