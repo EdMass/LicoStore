@@ -6,11 +6,12 @@ import co.com.sofka.domain.ventas.value.*;
 
 public class VentaCreada extends DomainEvent {
     private final Nombre nombreCliente;
-    private final VendedorID vendedorID;
     private final Telefono telefonoCliente;
     private final ClienteID clienteID;
+    private final VendedorID vendedorID;
 
-    public VentaCreada(ClienteID clienteID,Nombre nombreCliente,
+
+    public VentaCreada(ClienteID clienteID, Nombre nombreCliente,
                        Telefono telefonoCliente,
                        VendedorID vendedorID) {
         super("sofka.venta.ventacreada");
