@@ -1,6 +1,6 @@
 package co.com.sofka.domain.ventas;
 
-import co.com.sofka.domain.envio.value.Direccion;
+
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.domain.ventas.value.ClienteID;
 import co.com.sofka.domain.ventas.value.Nombre;

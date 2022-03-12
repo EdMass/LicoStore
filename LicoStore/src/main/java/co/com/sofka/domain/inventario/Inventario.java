@@ -3,9 +3,7 @@ package co.com.sofka.domain.inventario;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.inventario.event.InventarioCreado;
-import co.com.sofka.domain.inventario.event.ProductoCreado;
-import co.com.sofka.domain.inventario.event.ProductoEliminado;
+import co.com.sofka.domain.inventario.event.*;
 import co.com.sofka.domain.inventario.value.*;
 
 import java.util.List;
@@ -32,7 +30,8 @@ public class Inventario extends AggregateEvent {
     public void crearProducto(ProductoID productoID,
                               Nombre nombre,
                               Precio precio,
-                              Descripcion descripcion){
+                              Descripcion descripcion,
+                              ProveedorID proveedorID){
         Objects.requireNonNull(productoID);
         Objects.requireNonNull(nombre);
         Objects.requireNonNull(precio);
@@ -45,7 +44,21 @@ public class Inventario extends AggregateEvent {
         appendChange(new ProductoEliminado(productoID)).apply();
     }
 
-    public void crearProveedor(){
+    public void crearProveedor(ProveedorID proveedorID, Nombre nombre, List<Producto> productos ){
+        Objects.requireNonNull(proveedorID);
+        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(productos);
+        appendChange(new ProveedorCreado(proveedorID, nombre, productos)).apply();
+    }
 
+    public void eliminarProveedor(ProveedorID proveedorID){
+        Objects.requireNonNull(proveedorID);
+        appendChange(new ProveedorEliminado(proveedorID)).apply();
+    }
+
+    public void actualizarDescripciondeProducto(ProductoID productoID, Descripcion newDescripcion){
+        Objects.requireNonNull(productoID);
+        Objects.requireNonNull(newDescripcion);
+        appendChange(new DescripciondeProductoActualizada(productoID, newDescripcion)).apply();
     }
 }
