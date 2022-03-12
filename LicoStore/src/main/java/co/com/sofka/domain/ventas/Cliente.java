@@ -15,7 +15,7 @@ public class Cliente extends Entity<ClienteID> {
     protected Nombre nombre;
     protected Telefono telefono;
     protected List<Cliente> clientes = new ArrayList();
-//    protected Direccion direccion;
+
 
     public Cliente(ClienteID entityId, Nombre nombre, Telefono telefono) {
         super(entityId);
@@ -28,28 +28,51 @@ public class Cliente extends Entity<ClienteID> {
     }
 
 
-    public void crearCliente(ClienteID clienteId, Nombre nombre, Telefono telefono){
-        for (Cliente cliente: clientes) {
-            if(cliente.entityId.equals(clienteId)){
-                System.out.println("Cliente ya existe");
+    public Cliente buscarClientePorID(ClienteID clienteID) {
+        Cliente cliente1 = new Cliente(clienteID);
+        Cliente cliente2 = new Cliente(clienteID);
+        for (Cliente cliente : clientes) {
+            if (cliente.entityId.equals(clienteID)) {
+                cliente1.nombre = cliente.nombre;
+                cliente1.telefono = cliente.telefono;
+                return cliente1;
             }
-            Cliente clientito = new Cliente(clienteId, nombre, telefono);
-            clientes.add(clientito);
+        }
+        crearCliente(clienteID, nombre, telefono);
+        for (Cliente cliente3 : clientes) {
+            if (cliente3.entityId.equals(clienteID)) {
+                cliente2.nombre = cliente3.nombre;
+                cliente2.telefono = cliente3.telefono;
+            }
+        }
+
+        return cliente2;
+    }
+
+
+    public void crearCliente(ClienteID clienteId, Nombre nombre, Telefono telefono) {
+        for (Cliente cliente : clientes) {
+            if (cliente.entityId.equals(clienteId)) {
+                System.out.println("Cliente ya existe");
+            } else {
+                Cliente clientito = new Cliente(clienteId, nombre, telefono);
+                clientes.add(clientito);
+            }
+
         }
     }
 
-    public void eliminarCliente(ClienteID clienteId){
-        for (Cliente cliente:clientes) {
-            if(cliente.entityId.equals(clienteId)){
+    public void eliminarCliente(ClienteID clienteId) {
+        for (Cliente cliente : clientes) {
+            if (cliente.entityId.equals(clienteId)) {
                 clientes.remove(cliente);
-            }
-            else{
+            } else {
                 System.out.println("Cliente no encontrado");
             }
         }
     }
 
-    public void actualizarCliente(ClienteID clienteId,Nombre nombre, Telefono telefono){
+    public void actualizarCliente(ClienteID clienteId, Nombre nombre, Telefono telefono) {
         eliminarCliente(clienteId);
         crearCliente(clienteId, nombre, telefono);
     }
