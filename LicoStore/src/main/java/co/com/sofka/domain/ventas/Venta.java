@@ -26,12 +26,11 @@ public class Venta extends AggregateEvent<VentaID> {
 
     public Venta(VentaID entityId,
                  ClienteID clienteID,
-                 VendedorID vendedorID, Fecha fecha, Pago pago,
-                 Orden orden, Factura factura, Total total) {
+                 VendedorID vendedorID,
+                 Fecha fecha) {
         super(entityId);
         subscribe(new VentaChange(this));
-        appendChange(new VentaCreada(clienteID, vendedorID, fecha,
-                pago, orden, factura, total)).apply();
+        appendChange(new VentaCreada(clienteID, vendedorID, fecha)).apply();
     }
 
     // TODO: 11/03/2022 arreglar el VentaChange
