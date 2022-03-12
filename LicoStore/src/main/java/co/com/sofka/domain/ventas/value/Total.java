@@ -16,7 +16,7 @@ public class Total implements ValueObject<Double> {
     public Double sumarProductos(){
          Orden orden = new Orden(ordenID);
         for (Producto producto: orden.listarProductos()) {
-            contador = contador + producto.precio().getPrice();
+            contador = contador + producto.Precio().getPrice();
         }
         return contador;
     }

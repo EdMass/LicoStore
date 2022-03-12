@@ -1,7 +1,6 @@
 package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.generic.EventChange;
-import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.ventas.event.ClienteActualizado;
 import co.com.sofka.domain.ventas.event.ProductoAgregado;
 import co.com.sofka.domain.ventas.event.VendedorCambiado;
