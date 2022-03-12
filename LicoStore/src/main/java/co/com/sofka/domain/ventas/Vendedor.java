@@ -1,7 +1,6 @@
 package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domain.ventas.value.ClienteID;
 import co.com.sofka.domain.ventas.value.Nombre;
 import co.com.sofka.domain.ventas.value.Telefono;
 import co.com.sofka.domain.ventas.value.VendedorID;
@@ -33,16 +32,16 @@ public class Vendedor extends Entity<VendedorID> {
         Vendedor vendedor2 = new Vendedor(vendedorID);
         for (Vendedor vendedor : vendedores) {
             if (vendedor.entityId.equals(vendedorID)) {
-                vendedor1.nombre = vendedor.nombre;
-                vendedor1.telefono = vendedor.telefono;
+                vendedor1.nombre = vendedor.Nombre();
+                vendedor1.telefono = vendedor.Telefono();
                 return vendedor1;
             }
         }
         crearVendedor(vendedorID, nombre, telefono);
         for (Vendedor vendedor3 : vendedores) {
             if (vendedor3.entityId.equals(vendedorID)) {
-                vendedor2.nombre = vendedor3.nombre;
-                vendedor2.telefono = vendedor3.telefono;
+                vendedor2.nombre = vendedor3.Nombre();
+                vendedor2.telefono = vendedor3.Telefono();
             }
         }
         return vendedor2;
@@ -51,7 +50,7 @@ public class Vendedor extends Entity<VendedorID> {
     public void crearVendedor(VendedorID vendedorID, Nombre nombre, Telefono telefono) {
         for (Vendedor vendedor : vendedores) {
             if (vendedor.entityId.equals(vendedorID)) {
-                System.out.println("Cliente ya existe");
+                System.out.println("Vendedor ya existe");
             }
             Vendedor vendedorsito = new Vendedor(vendedorID, nombre, telefono);
             vendedores.add(vendedorsito);
@@ -63,7 +62,7 @@ public class Vendedor extends Entity<VendedorID> {
             if (vendedor.entityId.equals(vendedorID)) {
                 vendedores.remove(vendedor);
             } else {
-                System.out.println("Cliente no encontrado");
+                System.out.println("Vendedor no encontrado");
             }
         }
     }
@@ -77,15 +76,15 @@ public class Vendedor extends Entity<VendedorID> {
         ventasHechas.add(Objects.requireNonNull(venta));
     }
 
-    public Nombre nombre() {
+    public Nombre Nombre() {
         return nombre;
     }
 
-    public Telefono telefono() {
+    public Telefono Telefono() {
         return telefono;
     }
 
-    public VendedorID vendedorID(){
+    public VendedorID VendedorID(){
         return vendedorID;
     }
 

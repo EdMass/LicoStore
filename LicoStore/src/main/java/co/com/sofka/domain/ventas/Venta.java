@@ -3,18 +3,17 @@ package co.com.sofka.domain.ventas;
 import co.com.sofka.domain.envio.value.EnvioID;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.inventario.value.Cantidad;
-import co.com.sofka.domain.inventario.value.Precio;
-import co.com.sofka.domain.inventario.value.ProductoID;
+import co.com.sofka.domain.inventario.value.*;
 import co.com.sofka.domain.ventas.event.*;
 import co.com.sofka.domain.ventas.value.*;
+import co.com.sofka.domain.ventas.value.Telefono;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 
 public class Venta extends AggregateEvent<VentaID> {
+
     protected ClienteID clienteID;
     protected Fecha fecha;
     protected Pago pago;
@@ -91,14 +90,15 @@ public class Venta extends AggregateEvent<VentaID> {
     }
 
     public void agregarProducto(ProductoID productoID,
-                                Nombre nombreProducto,
+                                NombreInventario nombreProducto,
                                 Precio precio,
+                                Descripcion descripcion,
                                 Cantidad cantidad) {
         Objects.requireNonNull(productoID);
         Objects.requireNonNull(nombreProducto);
         Objects.requireNonNull(precio);
         Objects.requireNonNull(cantidad);
-        appendChange(new ProductoAgregado(productoID, nombreProducto, precio, cantidad)).apply();
+        appendChange(new ProductoAgregado(productoID, nombreProducto, precio,descripcion, cantidad)).apply();
     }
 
     public void eliminarProducto(ProductoID productoID) {

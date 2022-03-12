@@ -33,16 +33,16 @@ public class Cliente extends Entity<ClienteID> {
         Cliente cliente2 = new Cliente(clienteID);
         for (Cliente cliente : clientes) {
             if (cliente.entityId.equals(clienteID)) {
-                cliente1.nombre = cliente.nombre;
-                cliente1.telefono = cliente.telefono;
+                cliente1.nombre = cliente.Nombre();
+                cliente1.telefono = cliente.Telefono();
                 return cliente1;
             }
         }
         crearCliente(clienteID, nombre, telefono);
         for (Cliente cliente3 : clientes) {
             if (cliente3.entityId.equals(clienteID)) {
-                cliente2.nombre = cliente3.nombre;
-                cliente2.telefono = cliente3.telefono;
+                cliente2.nombre = cliente3.Nombre();
+                cliente2.telefono = cliente3.Telefono();
             }
         }
 

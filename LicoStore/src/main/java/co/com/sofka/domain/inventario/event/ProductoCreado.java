@@ -2,21 +2,21 @@ package co.com.sofka.domain.inventario.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.value.Descripcion;
-import co.com.sofka.domain.inventario.value.Nombre;
+import co.com.sofka.domain.inventario.value.NombreInventario;
 import co.com.sofka.domain.inventario.value.Precio;
 import co.com.sofka.domain.inventario.value.ProductoID;
 
 public class ProductoCreado extends DomainEvent {
 
     private final ProductoID productoID;
-    private final Nombre nombre;
+    private final NombreInventario nombreInventario;
     private final Precio precio;
     private final Descripcion descripcion;
 
-    public ProductoCreado(ProductoID productoID, Nombre nombre, Precio precio, Descripcion descripcion) {
+    public ProductoCreado(ProductoID productoID, NombreInventario nombreInventario, Precio precio, Descripcion descripcion) {
         super("sofka.inventario.productocreado");
         this.productoID = productoID;
-        this.nombre = nombre;
+        this.nombreInventario = nombreInventario;
         this.precio = precio;
         this.descripcion = descripcion;
     }
@@ -25,8 +25,8 @@ public class ProductoCreado extends DomainEvent {
         return productoID;
     }
 
-    public Nombre getNombre() {
-        return nombre;
+    public NombreInventario getNombre() {
+        return nombreInventario;
     }
 
     public Precio getPrecio() {

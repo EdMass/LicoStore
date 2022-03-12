@@ -1,13 +1,11 @@
 package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.generic.EventChange;
+import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.ventas.event.ClienteActualizado;
+import co.com.sofka.domain.ventas.event.ProductoAgregado;
 import co.com.sofka.domain.ventas.event.VendedorCambiado;
 import co.com.sofka.domain.ventas.event.VentaCreada;
-import co.com.sofka.domain.ventas.value.ClienteID;
-import co.com.sofka.domain.ventas.value.VendedorID;
-
-import java.util.List;
 
 public class VentaChange extends EventChange {
 
@@ -29,7 +27,7 @@ public class VentaChange extends EventChange {
         apply((VendedorCambiado event) -> {
             Vendedor vendedor = new Vendedor(event.getVendedorID());
             var vendedorActualizado = vendedor.buscarVendedorPorID(event.getVendedorID());
-            venta.vendedorID = vendedorActualizado.vendedorID();
+            venta.vendedorID = vendedorActualizado.VendedorID();
         });
 
         apply((ClienteActualizado event) -> {
@@ -39,17 +37,16 @@ public class VentaChange extends EventChange {
 
 
         });
-/*
+
         apply((ProductoAgregado event) -> {
-            venta. =
+            venta.orden.agregarProductoAOrden(event.getProductoID(),
+                    event.getNombreProducto(),
+                    event.getPrecio(),
+                    event.getDescripcion(),
+                    event.getCantidad());
         });
+
+
     }
 
-    private Cliente getClienteByIdentity(Venta entity, Identity identity) {
-        return entity.students.stream()
-                .filter(e -> e.identity().equals(identity))
-                .findFirst()
-                .orElseThrow();
-    }*/
-    }
 }

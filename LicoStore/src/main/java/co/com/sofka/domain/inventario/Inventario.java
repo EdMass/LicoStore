@@ -27,15 +27,15 @@ public class Inventario extends AggregateEvent {
     }
 
     public void crearProducto(ProductoID productoID,
-                              Nombre nombre,
+                              NombreInventario nombreInventario,
                               Precio precio,
                               Descripcion descripcion,
                               ProveedorID proveedorID){
         Objects.requireNonNull(productoID);
-        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(nombreInventario);
         Objects.requireNonNull(precio);
         Objects.requireNonNull(descripcion);
-        appendChange(new ProductoCreado(productoID, nombre, precio, descripcion)).apply();
+        appendChange(new ProductoCreado(productoID, nombreInventario, precio, descripcion)).apply();
     }
 
     public void eliminarProducto(ProductoID productoID){
@@ -43,11 +43,11 @@ public class Inventario extends AggregateEvent {
         appendChange(new ProductoEliminado(productoID)).apply();
     }
 
-    public void crearProveedor(ProveedorID proveedorID, Nombre nombre, List<Producto> productos ){
+    public void crearProveedor(ProveedorID proveedorID, NombreInventario nombreInventario, List<Producto> productos ){
         Objects.requireNonNull(proveedorID);
-        Objects.requireNonNull(nombre);
+        Objects.requireNonNull(nombreInventario);
         Objects.requireNonNull(productos);
-        appendChange(new ProveedorCreado(proveedorID, nombre, productos)).apply();
+        appendChange(new ProveedorCreado(proveedorID, nombreInventario, productos)).apply();
     }
 
     public void eliminarProveedor(ProveedorID proveedorID){

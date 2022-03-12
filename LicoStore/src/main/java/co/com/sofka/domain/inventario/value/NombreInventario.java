@@ -2,12 +2,12 @@ package co.com.sofka.domain.inventario.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class Nombre implements ValueObject<String> {
+public class NombreInventario implements ValueObject<String> {
 
     private final String nombre;
 
 
-    public Nombre(String nombreProducto) {
+    public NombreInventario(String nombreProducto) {
         this.nombre = nombreProducto;
 
     }

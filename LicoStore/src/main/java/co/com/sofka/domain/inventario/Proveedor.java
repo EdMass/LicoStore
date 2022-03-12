@@ -1,7 +1,7 @@
 package co.com.sofka.domain.inventario;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domain.inventario.value.Nombre;
+import co.com.sofka.domain.inventario.value.NombreInventario;
 import co.com.sofka.domain.inventario.value.ProveedorID;
 import co.com.sofka.domain.inventario.value.Telefono;
 
@@ -10,19 +10,19 @@ import java.util.List;
 
 public class Proveedor extends Entity<ProveedorID> {
 
-    protected Nombre nombre;
+    protected NombreInventario nombreInventario;
     protected Telefono telefono;
     protected List<Producto> productos;
 
-    public Proveedor(ProveedorID entityId, Nombre nombre, Telefono telefono, List<Producto> productos) {
+    public Proveedor(ProveedorID entityId, NombreInventario nombreInventario, Telefono telefono, List<Producto> productos) {
         super(entityId);
-        this.nombre = nombre;
+        this.nombreInventario = nombreInventario;
         this.telefono = telefono;
         this.productos = productos;
     }
 
-    public Nombre nombre() {
-        return nombre;
+    public NombreInventario nombre() {
+        return nombreInventario;
     }
 
     public Telefono telefono() {

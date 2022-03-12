@@ -2,23 +2,23 @@ package co.com.sofka.domain.envio;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.domain.envio.value.DomiciliarioID;
 import co.com.sofka.domain.inventario.value.Telefono;
-import co.com.sofka.domain.inventario.value.Nombre;
+import co.com.sofka.domain.inventario.value.NombreInventario;
 
 public class Domiciliario extends Entity<DomiciliarioID> {
 
-    protected Nombre nombre;
+    protected NombreInventario nombreInventario;
     protected Telefono telefono;
 
 
-    public Domiciliario (DomiciliarioID entityId, Nombre nombre,Telefono telefono) {
+    public Domiciliario (DomiciliarioID entityId, NombreInventario nombreInventario, Telefono telefono) {
         super(entityId);
-        this.nombre = nombre;
+        this.nombreInventario = nombreInventario;
         this.telefono= telefono;
 
     }
 
-    public Nombre nombre() {
-        return nombre;
+    public NombreInventario nombre() {
+        return nombreInventario;
     }
 
     public Telefono telefono() {
