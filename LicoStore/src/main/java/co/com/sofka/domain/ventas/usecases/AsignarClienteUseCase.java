@@ -12,7 +12,10 @@ public class AsignarClienteUseCase extends UseCase<RequestCommand<AsignarCliente
 
         var command = input.getCommand();
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
-        venta.asignarCliente(command.getClienteID(), command.getNombre(), command.getTelefono());
+        venta.asignarCliente(
+                command.getClienteID(),
+                command.getNombre(),
+                command.getTelefono());
 
         emit().onResponse(new ResponseEvents(venta.getUncommittedChanges()));
     }

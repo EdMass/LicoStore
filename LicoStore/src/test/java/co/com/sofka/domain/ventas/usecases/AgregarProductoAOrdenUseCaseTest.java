@@ -51,8 +51,8 @@ class AgregarProductoAOrdenUseCaseTest {
                 .syncExecutor(usecase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
-        //assert
 
+        //assert
         var event = (ProductoAgregado) events.get(0);
         Assertions.assertEquals("sofka.venta.productoagregado", event.type);
         Assertions.assertEquals("Ron", event.getNombreProducto().value());
