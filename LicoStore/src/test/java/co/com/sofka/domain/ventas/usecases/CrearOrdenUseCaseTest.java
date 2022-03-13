@@ -4,8 +4,9 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.inventario.value.*;
+import co.com.sofka.domain.inventario.value.ProductoID;
 import co.com.sofka.domain.ventas.comandos.AgregarProductoAOrden;
+import co.com.sofka.domain.ventas.comandos.CrearOrden;
 import co.com.sofka.domain.ventas.event.OrdenCreada;
 import co.com.sofka.domain.ventas.event.ProductoAgregado;
 import co.com.sofka.domain.ventas.event.VentaCreada;
@@ -20,50 +21,39 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-@ExtendWith(MockitoExtension.class)
-class AgregarProductoAOrdenUseCaseTest {
+import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
+class CrearOrdenUseCaseTest {
     @Mock
     private DomainEventRepository repository;
 
     @Test
-    void AgregarProducto(){
+    void CrearOrden() {
         //arrange
         VentaID ventaID = VentaID.of("xxxx");
-        ProductoID productoID = ProductoID.of("ffffff");
-        NombreInventario nombre = new NombreInventario("Ron");
-        Precio precio = new Precio(50.52);
-        Descripcion descripcion = new Descripcion("Cacique");
-        Cantidad cantidad = new Cantidad(5);
+        OrdenID ordenID = OrdenID.of("5230");
 
-
-        var command = new AgregarProductoAOrden(ventaID,productoID,nombre,precio,descripcion,cantidad);
-
-        var usecase = new AgregarProductoAOrdenUseCase();
-
+        var command = new CrearOrden(ventaID, ordenID);
+        var usecase = new CrearOrdenUseCase();
 
         Mockito.when(repository.getEventsBy("xxxx")).thenReturn(history());
         usecase.addRepository(repository);
         //act
-
         var events = UseCaseHandler.getInstance()
                 .setIdentifyExecutor(ventaID.value())
                 .syncExecutor(usecase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
-        //assert
 
-        var event = (ProductoAgregado) events.get(0);
-        Assertions.assertEquals("sofka.venta.productoagregado", event.type);
-        Assertions.assertEquals("Ron", event.getNombreProducto().value());
-        Assertions.assertEquals("ffffff", event.getProductoID().value());
-
+        var event = (OrdenCreada) events.get(0);
+        Assertions.assertEquals("sofka.venta.ordencreada", event.type);
+        Assertions.assertEquals("5230", event.getOrdenID().value());
     }
 
     private List<DomainEvent> history() {
         return List.of(
-                new VentaCreada(VentaID.of("xxxx"),null),
-                new OrdenCreada(OrdenID.of("ffff"))
+                new VentaCreada(VentaID.of("xxxx"), null)
         );
     }
 }
