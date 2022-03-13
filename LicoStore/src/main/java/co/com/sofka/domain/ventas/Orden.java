@@ -13,9 +13,10 @@ public class Orden extends Entity<OrdenID> {
     private List<Producto> productosOrden= new ArrayList<>();
 
     public Orden(OrdenID entityId) {
-
         super(entityId);
     }
+
+
 
     public void agregarProductoAOrden(ProductoID productoID,
                                       NombreInventario nombreInventario,

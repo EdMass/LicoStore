@@ -30,9 +30,9 @@ class AgregarProductoAOrdenUseCaseTest {
         //arrange
         VentaID ventaID = VentaID.of("xxxx");
         ProductoID productoID = ProductoID.of("ffffff");
-        NombreInventario nombre = new NombreInventario("Caja de cereales");
+        NombreInventario nombre = new NombreInventario("Ron");
         Precio precio = new Precio(50.52);
-        Descripcion descripcion = new Descripcion("Contiene trozitos ricos ");
+        Descripcion descripcion = new Descripcion("Cacique");
         Cantidad cantidad = new Cantidad(5);
 
 

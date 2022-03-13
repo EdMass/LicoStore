@@ -70,6 +70,10 @@ public class VentaChange extends EventChange {
         apply((VentaPagada event) -> {
             venta.pago = new Pago(Pago.Fase.PAGADO);
         });
+
+        apply((OrdenCreada event) -> {
+            venta.orden = new Orden(event.getOrdenID());
+        });
     }
 
 }

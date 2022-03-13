@@ -86,6 +86,10 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new ProductoAgregado(productoID, nombreProducto, precio, descripcion, cantidad)).apply();
     }
 
+    public void crearOrden(OrdenID ordenID){
+        appendChange(new OrdenCreada(ordenID)).apply();
+    }
+
     public void eliminarProducto(ProductoID productoID) {
         appendChange(new ProductoEliminado(productoID)).apply();
     }
@@ -234,8 +238,5 @@ public class Venta extends AggregateEvent<VentaID> {
     public Cliente cliente() {
         return cliente;
     }
-
-
-
 
 }
