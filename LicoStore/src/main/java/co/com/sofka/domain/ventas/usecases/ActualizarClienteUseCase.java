@@ -11,7 +11,7 @@ public class ActualizarClienteUseCase extends UseCase<RequestCommand<ActualizarC
     public void executeUseCase(RequestCommand<ActualizarCliente> input) {
         var command = input.getCommand();
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
-        venta.actualizarCliente(
+        venta.actualizarClienteEvento(
                 command.getClienteID(),
                 command.getNombre(),
                 command.getTelefono());
