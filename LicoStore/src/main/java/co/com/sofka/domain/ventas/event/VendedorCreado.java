@@ -13,7 +13,7 @@ public class VendedorCreado extends DomainEvent {
     private final Telefono telefono;
 
     public VendedorCreado(VendedorID vendedorID, Nombre nombre, Telefono telefono) {
-        super("sofka.venta.vendedoragregado");
+        super("sofka.venta.vendedorcreado");
         this.vendedorID = vendedorID;
         this.nombre = nombre;
         this.telefono = telefono;

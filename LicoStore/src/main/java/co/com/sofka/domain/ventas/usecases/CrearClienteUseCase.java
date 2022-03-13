@@ -12,7 +12,7 @@ public class CrearClienteUseCase extends UseCase<RequestCommand<CrearCliente>, R
 
         var command = input.getCommand();
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
-        venta.crearCliente(
+        venta.crearClienteEvento(
                 command.getClienteID(),
                 command.getNombre(),
                 command.getTelefono());

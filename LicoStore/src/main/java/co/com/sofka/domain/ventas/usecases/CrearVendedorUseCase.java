@@ -12,7 +12,7 @@ public class CrearVendedorUseCase extends UseCase<RequestCommand<CrearVendedor>,
 
         var command = input.getCommand();
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
-        venta.crearVendedor(
+        venta.crearVendedorEvento(
                 command.getVendedorID(),
                 command.getNombre(),
                 command.getTelefono());

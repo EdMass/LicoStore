@@ -13,7 +13,7 @@ public class ClienteCreado extends DomainEvent {
     private final Telefono telefono;
 
     public ClienteCreado(ClienteID clienteID, Nombre nombre, Telefono telefono) {
-        super("sofka.venta.clienteagregado");
+        super("sofka.venta.clientecreado");
         this.clienteID = clienteID;
         this.nombre = nombre;
         this.telefono = telefono;
