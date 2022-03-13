@@ -1,6 +1,7 @@
 package co.com.sofka.domain.ventas;
 
 import co.com.sofka.domain.generic.EventChange;
+import co.com.sofka.domain.ventas.comandos.GenerarFactura;
 import co.com.sofka.domain.ventas.event.*;
 import co.com.sofka.domain.ventas.value.Factura;
 import co.com.sofka.domain.ventas.value.Pago;
@@ -13,15 +14,13 @@ public class VentaChange extends EventChange {
 
 
         apply((VentaCreada event) -> {
-            venta.vendedorID = event.getVendedorID();
             venta.fecha = event.getFecha();
         });
 
 
         apply((VendedorCambiado event) -> {
-            Vendedor vendedor = new Vendedor(event.getVendedorID());
-            var vendedorActualizado = vendedor.buscarVendedorPorID(event.getVendedorID());
-            venta.vendedorID = vendedorActualizado.VendedorID();
+            var vendedorActualizado = new Vendedor(event.getVendedorID(),event.getNombre(), event.getTelefono());
+            venta.vendedor = vendedorActualizado;
         });
 
         apply((ClienteActualizado event) -> {
@@ -39,8 +38,7 @@ public class VentaChange extends EventChange {
         });
 
         apply((VendedorCreado event) -> {
-            Vendedor vendedor = new Vendedor(event.getVendedorID());
-            vendedor.crearVendedor(event.getVendedorID(), event.getNombre(), event.getTelefono());
+            venta.crearVendedor(event.getVendedorID(), event.getNombre(), event.getTelefono());
         });
 
         apply((ClienteCreado event) -> {
@@ -53,7 +51,7 @@ public class VentaChange extends EventChange {
         });
 
         apply((VendedorAsignado event) -> {
-            venta.vendedorID = event.getVendedorID();
+            venta.vendedor = new Vendedor(event.getVendedorID(), event.getNombre(), event.getTelefono());
         });
 
         apply((ProductoEliminado event) -> {
@@ -61,9 +59,7 @@ public class VentaChange extends EventChange {
         });
 
         apply((FacturaGenerada event) -> {
-            Factura factura = new Factura(venta.Fecha(),
-                    venta.Pago(), venta.Orden(),
-                    venta.VendedorID(), venta.Total());
+            venta.factura= event.getFactura();
         });
 
         apply((TotalCalculado event) -> {

@@ -14,7 +14,8 @@ public class AsignarVendedorUseCase extends UseCase<RequestCommand<AsignarVended
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
         venta.asignarVendedor(
                 command.getVendedorID(),
-                command.getVentaID());
+                command.getNombre(),
+                command.getTelefono());
 
         emit().onResponse(new ResponseEvents(venta.getUncommittedChanges()));
     }

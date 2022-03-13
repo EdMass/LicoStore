@@ -11,8 +11,9 @@ public class CambiarVendedorUseCase extends UseCase<RequestCommand<CambiarVended
     public void executeUseCase(RequestCommand<CambiarVendedor> input) {
         var command = input.getCommand();
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
-        venta.cambiarVendedor(
-                command.getVendedorID());
+        venta.cambiarVendedorEvento(
+                command.getVendedorID(),
+                command.getNombre(),command.getTelefono());
         emit().onResponse(new ResponseEvents(venta.getUncommittedChanges()));
     }
 }
