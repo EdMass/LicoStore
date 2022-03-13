@@ -2,25 +2,19 @@ package co.com.sofka.domain.ventas.value;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class Pago implements ValueObject<Double> {
+public class Pago implements ValueObject<Pago.Fase> {
+    private final Fase value;
 
-    private Double dinero;
-    private Total total;
-
-    public Pago(Double dinero, Total total) {
-        this.dinero = dinero;
-        this.total = total;
-    }
-
-    public Double vueltos(Double dinero, Total total){
-        dinero= dinero - total.value();
-        if(dinero>0){
-            return dinero;
-        }throw new IllegalArgumentException("El dinero entregado no es suficiente, aun faltan "+(-1*dinero));
+    public Pago(Fase value) {
+        this.value = value;
     }
 
     @Override
-    public Double value() {
-        return this.vueltos(dinero, total);
+    public Fase value() {
+        return value;
+    }
+
+    public enum Fase {
+        PAGADO, NO_PAGADO
     }
 }

@@ -16,7 +16,7 @@ public class Venta extends AggregateEvent<VentaID> {
 
     protected ClienteID clienteID;
     protected Fecha fecha;
-    protected Pago pago;
+    protected Pago pago = new Pago(Pago.Fase.NO_PAGADO);
     protected Orden orden;
     protected VendedorID vendedorID;
     protected EnvioID envioID;

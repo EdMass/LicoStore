@@ -4,6 +4,7 @@ import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.ventas.event.*;
 import co.com.sofka.domain.ventas.value.Factura;
+import co.com.sofka.domain.ventas.value.Pago;
 import co.com.sofka.domain.ventas.value.Total;
 
 public class VentaChange extends EventChange {
@@ -74,7 +75,7 @@ public class VentaChange extends EventChange {
         });
 
         apply((VentaPagada event) -> {
-            venta.pago = event.getPago();
+            venta.pago = new Pago(Pago.Fase.PAGADO);
         });
     }
 
