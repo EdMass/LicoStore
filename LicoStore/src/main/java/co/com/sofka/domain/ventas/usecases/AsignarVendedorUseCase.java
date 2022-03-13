@@ -1,4 +1,22 @@
 package co.com.sofka.domain.ventas.usecases;
 
-public class AsignarVendedorUseCase {
+import co.com.sofka.business.generic.UseCase;
+import co.com.sofka.business.support.RequestCommand;
+import co.com.sofka.business.support.ResponseEvents;
+import co.com.sofka.domain.ventas.Venta;
+import co.com.sofka.domain.ventas.comandos.AsignarVendedor;
+import co.com.sofka.domain.ventas.comandos.CrearVenta;
+import co.com.sofka.domain.ventas.value.VendedorID;
+
+public class AsignarVendedorUseCase extends UseCase<RequestCommand<AsignarVendedor>, ResponseEvents> {
+    @Override
+    public void executeUseCase(RequestCommand<AsignarVendedor> input) {
+        var command = input.getCommand();
+        var venta = Venta.from(command.getVentaID(), retrieveEvents());
+        venta.asignarVendedor(
+                command.getVendedorID(),
+                command.getVentaID()
+        );
+
+    }
 }

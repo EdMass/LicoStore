@@ -73,9 +73,10 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange((new ClienteAsignado(clienteID))).apply();
     }
 
-    public void asignarVendedor(VendedorID vendedorID) {
+    public void asignarVendedor(VendedorID vendedorID, VentaID ventaID) {
         Objects.requireNonNull(vendedorID);
-        appendChange(new VendedorAsignado(vendedorID)).apply();
+        Objects.requireNonNull(ventaID);
+        appendChange(new VendedorAsignado(vendedorID, ventaID)).apply();
     }
 
     public void cambiarVendedor(VendedorID vendedorID) {

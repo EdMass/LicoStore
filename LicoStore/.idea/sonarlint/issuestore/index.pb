@@ -43,8 +43,6 @@ c
 3src/main/java/co/com/sofka/domain/ventas/Orden.java,0\3\03f6178e16096e2685393aff8110b625a7528bed
 s
 Csrc/main/java/co/com/sofka/domain/ventas/event/FacturaGenerada.java,6\1\61e5ee1e6dd7b581d8099349e654ed99b0ab1ac8
-t
-Dsrc/main/java/co/com/sofka/domain/ventas/event/VendedorAsignado.java,6\6\66e1af9cc7faba127625d4a45e73a511d97de259
 v
 Fsrc/main/java/co/com/sofka/domain/envio/event/DescripcionAsignada.java,4\a\4aaacd22f532347c000a35e40d9668b61ba26723
 w
@@ -69,15 +67,7 @@ b
 2src/main/java/co/com/sofka/domain/envio/Envio.java,9\4\948a83e6467030dbe22b3671662b4dc7ba8e25e8
 t
 Dsrc/main/java/co/com/sofka/domain/ventas/event/ProductoAgregado.java,4\5\4540fd13682a22be28b72044e602e2a59a91e7aa
-|
-Lsrc/main/java/co/com/sofka/domain/ventas/comandos/AgregarProductoAOrden.java,7\7\77efdd002cba00569bb556a2ccb8413af9b6888f
 r
 Bsrc/main/java/co/com/sofka/domain/ventas/event/TotalCalculado.java,c\d\cd952553bc5d9cc7b989b736955fdd2633e22f54
-v
-Fsrc/main/java/co/com/sofka/domain/ventas/comandos/AsignarVendedor.java,9\6\96d4bb7781de870d20559f3414df606d4a7f8794
-}
-Msrc/main/java/co/com/sofka/domain/ventas/usecases/AsignarVendedorUseCase.java,4\0\400a75f0b63a97425e598b9673bfbad706ece062
-ƒ
-Ssrc/main/java/co/com/sofka/domain/ventas/usecases/AgregarProductoAOrdenUseCase.java,f\9\f952a89bdfba52f732bd375422ed3edbe771ea80
 ‡
 Wsrc/test/java/co/com/sofka/domain/ventas/usecases/AgregarProductoAOrdenUseCaseTest.java,c\9\c9a1e5cbc5bd653a469d12273d66defac4f4f77f
