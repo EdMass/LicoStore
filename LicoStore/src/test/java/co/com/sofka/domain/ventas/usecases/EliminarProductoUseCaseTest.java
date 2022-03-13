@@ -35,11 +35,7 @@ class EliminarProductoUseCaseTest {
     VentaID ventaID = VentaID.of("xxxx");
     ProductoID productoID = ProductoID.of("ffffff");
 
-
-
-
     var command = new EliminarProducto(ventaID,productoID);
-
     var usecase = new EliminarProductoUseCase();
 
     Mockito.when(repository.getEventsBy("xxxx")).thenReturn(history());
@@ -52,10 +48,9 @@ class EliminarProductoUseCaseTest {
             .orElseThrow()
             .getDomainEvents();
 
-    var event = (ProductoEliminado) events.get(events.size()-1);
-    Assertions.assertEquals("sofka.inventario.productoeliminado", event.type);
+    var event = (ProductoEliminado) events.get(0);
+    Assertions.assertEquals("sofka.venta.productoeliminado", event.type);
     Assertions.assertEquals("ffffff", event.getProductoID().value());
-
 
 }
 
@@ -63,11 +58,16 @@ class EliminarProductoUseCaseTest {
         return List.of(
                 new VentaCreada(VentaID.of("xxxx"),null),
                 new OrdenCreada(OrdenID.of("234")),
-                new ProductoCreado(ProductoID.of("ffffff"), new NombreInventario("gin"), new Precio(80.0),new Descripcion("Licor fuerte")),
-                new ProductoAgregado(ProductoID.of("ffffff"), new NombreInventario("gin"),new Precio(80.0),new Descripcion("Licor fuerte"),new Cantidad(3))
-
+                /*new ProductoCreado(ProductoID.of("ffffff"),
+                        new NombreInventario("gin"),
+                        new Precio(80.0),
+                        new Descripcion("Licor fuerte")),*/
+                new ProductoAgregado(ProductoID.of("ffffff"),
+                        new NombreInventario("gin"),
+                        new Precio(80.0),
+                        new Descripcion("Licor fuerte"),
+                        new Cantidad(3))
 
         );
     }
-
 }
