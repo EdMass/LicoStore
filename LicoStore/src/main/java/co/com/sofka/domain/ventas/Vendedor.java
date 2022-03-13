@@ -7,7 +7,6 @@ import co.com.sofka.domain.ventas.value.VendedorID;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Vendedor extends Entity<VendedorID> {
 
@@ -15,7 +14,6 @@ public class Vendedor extends Entity<VendedorID> {
     protected Telefono telefono;
     protected VendedorID vendedorID;
     private List<Vendedor> vendedores = new ArrayList();
-    private List<Venta> ventasHechas = new ArrayList<>();
 
     public Vendedor(VendedorID entityId, Nombre nombre, Telefono telefono) {
         super(entityId);
@@ -72,9 +70,7 @@ public class Vendedor extends Entity<VendedorID> {
         crearVendedor(entityId, nombre, telefono);
     }
 
-    public void agregarVenta(Venta venta) {
-        ventasHechas.add(Objects.requireNonNull(venta));
-    }
+
 
     public Nombre Nombre() {
         return nombre;

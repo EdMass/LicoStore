@@ -105,12 +105,6 @@ public class Venta extends AggregateEvent<VentaID> {
         appendChange(new ProductoEliminado(productoID)).apply();
     }
 
-    public void agregarVentaAVendedor(VentaID ventaID, VendedorID vendedorID) {
-        Objects.requireNonNull(ventaID);
-        Objects.requireNonNull(vendedorID);
-        appendChange(new VentaAgregadaAVendedor(ventaID, vendedorID)).apply();
-    }
-
     public void generarFactura(Factura factura) {
         Objects.requireNonNull(factura);
         appendChange(new FacturaGenerada(factura)).apply();
@@ -127,9 +121,7 @@ public class Venta extends AggregateEvent<VentaID> {
     }
 
 
-    public Fecha Fecha() {
-        return fecha;
-    }
+    public Fecha Fecha() {return fecha;}
 
     public Pago Pago() {
         return pago;

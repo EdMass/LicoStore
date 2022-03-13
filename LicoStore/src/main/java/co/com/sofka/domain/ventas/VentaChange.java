@@ -3,6 +3,8 @@ package co.com.sofka.domain.ventas;
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.domain.inventario.Producto;
 import co.com.sofka.domain.ventas.event.*;
+import co.com.sofka.domain.ventas.value.Factura;
+import co.com.sofka.domain.ventas.value.Total;
 
 public class VentaChange extends EventChange {
 
@@ -59,6 +61,20 @@ public class VentaChange extends EventChange {
 
         apply((ProductoEliminado event) -> {
             venta.orden.eliminarProducto(event.getProductoID());
+        });
+
+        apply((FacturaGenerada event) -> {
+            Factura factura = new Factura(venta.Fecha(),
+                    venta.Pago(), venta.Orden(),
+                    venta.VendedorID(), venta.Total());
+        });
+
+        apply((TotalCalculado event) -> {
+            venta.total = new Total(venta.Orden().identity());
+        });
+
+        apply((VentaPagada event) -> {
+            venta.pago = event.getPago();
         });
     }
 

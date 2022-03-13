@@ -6,7 +6,6 @@ import co.com.sofka.domain.ventas.Orden;
 
 public class Factura implements ValueObject<String> {
 
-    private Nombre nombre;
     private Fecha fecha;
     private Pago pago;
     private Orden orden;
@@ -14,8 +13,7 @@ public class Factura implements ValueObject<String> {
     private Total total;
 
 
-    public Factura(Nombre nombre, Fecha fecha, Pago pago, Orden orden, VendedorID vendedorID, Total total) {
-        this.nombre = nombre;
+    public Factura(Fecha fecha, Pago pago, Orden orden, VendedorID vendedorID, Total total) {
         this.fecha = fecha;
         this.pago = pago;
         this.orden = orden;
@@ -26,7 +24,6 @@ public class Factura implements ValueObject<String> {
     @Override
     public String toString() {
         return "Factura{" +
-                "Nombre=" + nombre +
                 ", fecha=" + fecha +
                 ", pago=" + pago +
                 ", orden=" + orden +
