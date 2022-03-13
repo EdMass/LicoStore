@@ -8,27 +8,15 @@ import co.com.sofka.domain.ventas.value.VentaID;
 
 public class CrearVenta extends Command {
     private final VentaID ventaID;
-    private final ClienteID clienteID;
-    private final VendedorID vendedorID;
     private final Fecha fecha;
 
-    public CrearVenta(VentaID ventaID, ClienteID clienteID, VendedorID vendedorID, Fecha fecha){
+    public CrearVenta(VentaID ventaID, Fecha fecha){
         this.ventaID=ventaID;
-        this.clienteID=clienteID;
-        this.vendedorID= vendedorID;
         this.fecha=fecha;
     }
 
     public VentaID getVentaID() {
         return ventaID;
-    }
-
-    public ClienteID getClienteID() {
-        return clienteID;
-    }
-
-    public VendedorID getVendedorID() {
-        return vendedorID;
     }
 
     public Fecha getFecha() {

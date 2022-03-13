@@ -30,7 +30,8 @@ public class VentaChange extends EventChange {
         });
 
         apply((ProductoAgregado event) -> {
-            venta.orden.agregarProductoAOrden(event.getProductoID(),
+            venta.orden.agregarProductoAOrden(
+                    event.getProductoID(),
                     event.getNombreProducto(),
                     event.getPrecio(),
                     event.getDescripcion(),

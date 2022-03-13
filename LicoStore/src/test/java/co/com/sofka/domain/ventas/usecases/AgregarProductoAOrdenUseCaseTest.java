@@ -7,6 +7,8 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.inventario.value.*;
 import co.com.sofka.domain.ventas.comandos.AgregarProductoAOrden;
 import co.com.sofka.domain.ventas.event.ProductoAgregado;
+import co.com.sofka.domain.ventas.event.VentaCreada;
+import co.com.sofka.domain.ventas.value.Fecha;
 import co.com.sofka.domain.ventas.value.VentaID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,13 +26,13 @@ class AgregarProductoAOrdenUseCaseTest {
     private DomainEventRepository repository;
 
     @Test
-    void agregarProducto(){
+    void AgregarProducto(){
         //arrange
         VentaID ventaID = VentaID.of("xxxx");
         ProductoID productoID = ProductoID.of("ffffff");
         NombreInventario nombre = new NombreInventario("Caja de cereales");
-        Descripcion descripcion = new Descripcion("Contiene trozitos ricos ");
         Precio precio = new Precio(50.52);
+        Descripcion descripcion = new Descripcion("Contiene trozitos ricos ");
         Cantidad cantidad = new Cantidad(5);
 
 
@@ -51,7 +53,7 @@ class AgregarProductoAOrdenUseCaseTest {
         //assert
 
         var event = (ProductoAgregado) events.get(0);
-        Assertions.assertEquals("sofka.Carrito.Productoagregago", event.type);
+        Assertions.assertEquals("sofka.venta.productoagregago", event.type);
         Assertions.assertEquals("Caja de cereales", event.getNombreProducto().value());
         Assertions.assertEquals("ffffff", event.getProductoID().value());
 
@@ -59,6 +61,6 @@ class AgregarProductoAOrdenUseCaseTest {
 
     private List<DomainEvent> history() {
         return List.of(
-
+                new VentaCreada(VentaID.of("xxxx"),null)
         );    }
 }

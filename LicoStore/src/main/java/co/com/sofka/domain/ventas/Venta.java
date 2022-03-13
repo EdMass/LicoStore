@@ -33,7 +33,7 @@ public class Venta extends AggregateEvent<VentaID> {
                  Fecha fecha) {
         super(entityId);
         subscribe(new VentaChange(this));
-        appendChange(new VentaCreada(fecha)).apply();
+        appendChange(new VentaCreada(entityId, fecha)).apply();
     }
 
     // TODO: 11/03/2022 arreglar el VentaChange
@@ -51,40 +51,30 @@ public class Venta extends AggregateEvent<VentaID> {
 
 
     public void crearVendedorEvento(VendedorID vendedorID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(vendedorID);
-        Objects.requireNonNull(nombre);
-        Objects.requireNonNull(telefono);
         appendChange(new VendedorCreado(vendedorID, nombre, telefono)).apply();
     }
 
     public void crearClienteEvento(ClienteID clienteID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(clienteID);
-        Objects.requireNonNull(nombre);
-        Objects.requireNonNull(telefono);
         appendChange(new ClienteCreado(clienteID, nombre, telefono)).apply();
     }
 
     public void asignarCliente(ClienteID clienteID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(clienteID);
-        Objects.requireNonNull(nombre);
-        Objects.requireNonNull(telefono);
+
         appendChange((new ClienteAsignado(clienteID, nombre, telefono))).apply();
     }
 
     public void asignarVendedor(VendedorID vendedorID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(vendedorID);
-        Objects.requireNonNull(nombre);
-        Objects.requireNonNull(telefono);
+
         appendChange(new VendedorAsignado(vendedorID, nombre, telefono)).apply();
     }
 
     public void cambiarVendedorEvento(VendedorID vendedorID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(vendedorID);
+
         appendChange(new VendedorCambiado(vendedorID, nombre, telefono)).apply();
     }
 
     public void actualizarClienteEvento(ClienteID clienteID, Nombre nombre, Telefono telefono) {
-        Objects.requireNonNull(clienteID);
+
         appendChange(new ClienteActualizado(clienteID, nombre, telefono)).apply();
     }
 
@@ -93,10 +83,6 @@ public class Venta extends AggregateEvent<VentaID> {
                                 Precio precio,
                                 Descripcion descripcion,
                                 Cantidad cantidad) {
-        Objects.requireNonNull(productoID);
-        Objects.requireNonNull(nombreProducto);
-        Objects.requireNonNull(precio);
-        Objects.requireNonNull(cantidad);
         appendChange(new ProductoAgregado(productoID, nombreProducto, precio, descripcion, cantidad)).apply();
     }
 
@@ -105,17 +91,14 @@ public class Venta extends AggregateEvent<VentaID> {
     }
 
     public void generarFactura(Factura factura) {
-        Objects.requireNonNull(factura);
         appendChange(new FacturaGenerada(factura)).apply();
     }
 
     public void calcularTotal(Total total) {
-        Objects.requireNonNull(total);
         appendChange(new TotalCalculado(total)).apply();
     }
 
     public void pagarVenta(Pago pago) {
-        Objects.requireNonNull(pago);
         appendChange(new VentaPagada(pago)).apply();
     }
 
