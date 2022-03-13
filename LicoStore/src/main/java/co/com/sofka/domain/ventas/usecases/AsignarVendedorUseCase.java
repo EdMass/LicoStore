@@ -5,8 +5,6 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.domain.ventas.Venta;
 import co.com.sofka.domain.ventas.comandos.AsignarVendedor;
-import co.com.sofka.domain.ventas.comandos.CrearVenta;
-import co.com.sofka.domain.ventas.value.VendedorID;
 
 public class AsignarVendedorUseCase extends UseCase<RequestCommand<AsignarVendedor>, ResponseEvents> {
     @Override
@@ -15,8 +13,8 @@ public class AsignarVendedorUseCase extends UseCase<RequestCommand<AsignarVended
         var venta = Venta.from(command.getVentaID(), retrieveEvents());
         venta.asignarVendedor(
                 command.getVendedorID(),
-                command.getVentaID()
-        );
+                command.getVentaID());
+        emit().onResponse(new ResponseEvents(venta.getUncommittedChanges()));
 
     }
 }

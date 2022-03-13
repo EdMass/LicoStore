@@ -71,3 +71,11 @@ r
 Bsrc/main/java/co/com/sofka/domain/ventas/event/TotalCalculado.java,c\d\cd952553bc5d9cc7b989b736955fdd2633e22f54
 ‡
 Wsrc/test/java/co/com/sofka/domain/ventas/usecases/AgregarProductoAOrdenUseCaseTest.java,c\9\c9a1e5cbc5bd653a469d12273d66defac4f4f77f
+q
+Asrc/main/java/co/com/sofka/domain/ventas/comandos/CrearVenta.java,3\d\3dbff0a7ba27f26b582fe5f43d56945c90e0d128
+x
+Hsrc/main/java/co/com/sofka/domain/ventas/usecases/CrearVentaUseCase.java,8\2\82fa827ef74bd94ca3c5899aa97ff56b31f9ab87
+ƒ
+Ssrc/main/java/co/com/sofka/domain/ventas/usecases/AgregarProductoAOrdenUseCase.java,f\9\f952a89bdfba52f732bd375422ed3edbe771ea80
+|
+Lsrc/main/java/co/com/sofka/domain/ventas/comandos/AgregarProductoAOrden.java,7\7\77efdd002cba00569bb556a2ccb8413af9b6888f
