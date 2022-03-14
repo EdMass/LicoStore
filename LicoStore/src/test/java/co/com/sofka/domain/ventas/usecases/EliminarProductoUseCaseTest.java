@@ -4,15 +4,12 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.inventario.event.ProductoCreado;
-import co.com.sofka.domain.inventario.event.ProductoEliminado;
+import co.com.sofka.domain.ventas.event.ProductoEliminado;
 import co.com.sofka.domain.inventario.value.*;
-import co.com.sofka.domain.ventas.comandos.AgregarProductoAOrden;
 import co.com.sofka.domain.ventas.comandos.EliminarProducto;
 import co.com.sofka.domain.ventas.event.OrdenCreada;
 import co.com.sofka.domain.ventas.event.ProductoAgregado;
 import co.com.sofka.domain.ventas.event.VentaCreada;
-import co.com.sofka.domain.ventas.value.Nombre;
 import co.com.sofka.domain.ventas.value.OrdenID;
 import co.com.sofka.domain.ventas.value.VentaID;
 import org.junit.jupiter.api.Assertions;
@@ -48,7 +45,8 @@ class EliminarProductoUseCaseTest {
             .orElseThrow()
             .getDomainEvents();
 
-    var event = (ProductoEliminado) events.get(0);
+    //System.out.println(events);
+    var event = (ProductoEliminado) events.get(events.size()-1);
     Assertions.assertEquals("sofka.venta.productoeliminado", event.type);
     Assertions.assertEquals("ffffff", event.getProductoID().value());
 
@@ -58,11 +56,8 @@ class EliminarProductoUseCaseTest {
         return List.of(
                 new VentaCreada(VentaID.of("xxxx"),null),
                 new OrdenCreada(OrdenID.of("234")),
-                /*new ProductoCreado(ProductoID.of("ffffff"),
-                        new NombreInventario("gin"),
-                        new Precio(80.0),
-                        new Descripcion("Licor fuerte")),*/
-                new ProductoAgregado(ProductoID.of("ffffff"),
+                new ProductoAgregado(
+                        ProductoID.of("ffffff"),
                         new NombreInventario("gin"),
                         new Precio(80.0),
                         new Descripcion("Licor fuerte"),
